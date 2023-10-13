@@ -67,5 +67,27 @@ function fetchPopularMovies() {
     })
     .catch((error) => console.log(error));
 }
+function fetchMoviesByReleaseDate() {
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=release_date.desc&page=${currentPage}`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      displayMovies(data.results);
+      displayPagination(data.total_pages);
+    })
+    .catch((error) => console.log(error));
+}
+function fetchMoviesByRating() {
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=vote_average.desc&page=${currentPage}`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      displayMovies(data.results);
+      displayPagination(data.total_pages);
+    })
+    .catch((error) => console.log(error));
+}
 
 
