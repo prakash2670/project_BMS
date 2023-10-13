@@ -132,4 +132,31 @@ function displayMovies(movies) {
   });
 }
 
+// Open movie details modal
+function openMovieDetailsModal(movieId) {
+  const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+  const movieRecommendationsUrl = `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${apiKey}`;
+
+  fetch(movieDetailsUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      modalTitle.textContent = data.title;
+      modalOverview.textContent = data.overview;
+      modalReleaseDate.textContent = `Release Date: ${data.release_date}`;
+      modalRuntime.textContent = `Runtime: ${data.runtime} minutes`;
+      modalGenres.textContent = `Genres: ${data.genres.map((genre) => genre.name).join(', ')}`;
+
+      // Fetch and display movie recommendations
+      fetch(movieRecommendationsUrl)
+        .then((response) => response.json())
+        .then((recommendations) => {
+          displayMovieRecommendations(recommendations.results);
+        })
+        .catch((error) => console.log(error));
+    })
+    .catch((error) => console.log(error));
+
+  movieDetailsModal.style.display = 'block';
+}
+
 
