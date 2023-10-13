@@ -4,3 +4,18 @@
   <title>IBOMMA</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+<header>
+    <h1>IBOMMA</h1>
+    <input type="text" id="searchInput" placeholder="Search movies">
+    <div id="sortingOptions">
+      <label for="sort">Sort by:</label>
+      <select id="sort">
+        <option value="popularity.desc">Popularity</option>
+        <option value="vote_average.desc">Rating</option>
+        <option value="release_date.desc">Release Date</option>
+      </select>
+    </div>
+  </header>
+  <div id="moviesContainer"></div>
+  <div id="pagination"></div>
+
