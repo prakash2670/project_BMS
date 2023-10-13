@@ -45,28 +45,7 @@ function fetchMovies() {
     return;
   }
 
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchTerm}&page=${currentPage}&sort_by=${sortBy}`;
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      displayMovies(data.results);
-      displayPagination(data.total_pages);
-    })
-    .catch((error) => console.log(error));
-}
-
-function fetchPopularMovies() {
-  const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${currentPage}`;
-
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      displayMovies(data.results);
-      displayPagination(data.total_pages);
-    })
-    .catch((error) => console.log(error));
-}
 function fetchMoviesByReleaseDate() {
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=release_date.desc&page=${currentPage}`;
 
