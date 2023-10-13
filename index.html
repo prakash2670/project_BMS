@@ -4,7 +4,8 @@
   <title>IBOMMA</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<header>
+<body>
+  <header>
     <h1>IBOMMA</h1>
     <input type="text" id="searchInput" placeholder="Search movies">
     <div id="sortingOptions">
@@ -19,3 +20,20 @@
   <div id="moviesContainer"></div>
   <div id="pagination"></div>
 
+  <!-- Additional Features -->
+  <div id="movieDetailsModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalOverview"></p>
+      <p id="modalReleaseDate"></p>
+      <p id="modalRuntime"></p>
+      <p id="modalGenres"></p>
+      <button id="closeModal">Close</button>
+    </div>
+  </div>
+  <div id="movieRecommendations"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
