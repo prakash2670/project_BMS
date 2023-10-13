@@ -45,6 +45,29 @@ function fetchMovies() {
     return;
   }
 
+ const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchTerm}&page=${currentPage}&sort_by=${sortBy}`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      displayMovies(data.results);
+      displayPagination(data.total_pages);
+    })
+    .catch((error) => console.log(error));
+}
+
+function fetchPopularMovies() {
+  const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${currentPage}`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      displayMovies(data.results);
+      displayPagination(data.total_pages);
+    })
+    .catch((error) => console.log(error));
+}
+
 
 function fetchMoviesByReleaseDate() {
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=release_date.desc&page=${currentPage}`;
@@ -136,6 +159,37 @@ function openMovieDetailsModal(movieId) {
     .catch((error) => console.log(error));
 
   movieDetailsModal.style.display = 'block';
+}
+
+/ Close movie details modal
+function closeMovieDetailsModal() {
+  movieDetailsModal.style.display = 'none';
+  movieRecommendations.innerHTML = '';
+}
+
+// Event listener for closing the movie details modal
+document.getElementById('closeModal').addEventListener('click', closeMovieDetailsModal);
+
+// Display movie recommendations
+function displayMovieRecommendations(recommendations) {
+  movieRecommendations.innerHTML = '';
+
+  recommendations.forEach((movie) => {
+    const movieElement = document.createElement('div');
+    movieElement.classList.add('movie');
+
+    const image = document.createElement('img');
+    image.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    image.alt = movie.title;
+    movieElement.appendChild(image);
+
+    const title = document.createElement('h3');
+    title.classList.add('movie-title');
+    title.textContent = movie.title;
+    movieElement.appendChild(title);
+
+    movieRecommendations.appendChild(movieElement);
+  });
 }
 
 
