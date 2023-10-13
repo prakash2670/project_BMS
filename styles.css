@@ -150,3 +150,17 @@ select {
   margin-bottom: 10px;
 }
 
+#modalReleaseDate,
+#modalRuntime,
+#modalGenres {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Movie Recommendations Styles */
+#movieRecommendations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+}
