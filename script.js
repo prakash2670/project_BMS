@@ -89,5 +89,15 @@ function fetchMoviesByRating() {
     })
     .catch((error) => console.log(error));
 }
+function displayMovies(movies) {
+  moviesContainer.innerHTML = '';
+
+  if (movies.length === 0) {
+    const noResults = document.createElement('p');
+    noResults.classList.add('no-results');
+    noResults.textContent = 'No results found.';
+    moviesContainer.appendChild(noResults);
+    return;
+  }
 
 
