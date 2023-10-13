@@ -140,3 +140,13 @@ select {
   cursor: pointer;
 }
 
+#modalTitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#modalOverview {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
