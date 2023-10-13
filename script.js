@@ -28,3 +28,30 @@ sortingOptions.addEventListener('change', () => {
   currentSortOption = sortingOptions.value;
   fetchMovies();
 });
+
+function fetchMovies() {
+  const searchTerm = searchInput.value.trim();
+  const sortBy = currentSortOption;
+
+  if (searchTerm === '') {
+    if (sortBy === 'popularity.desc') {
+      fetchPopularMovies();
+    } else if (sortBy === 'release_date.desc') {
+      fetchMoviesByReleaseDate();
+    } else if (sortBy === 'vote_average.desc') {
+      fetchMoviesByRating();
+    }
+    return;
+  }
+
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchTerm}&page=${currentPage}&sort_by=${sortBy}`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      displayMovies(data.results);
+      displayPagination(data.total_pages);
+    })
+    .catch((error) => console.log(error));
+}
+
