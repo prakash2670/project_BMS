@@ -29,6 +29,7 @@ sortingOptions.addEventListener('change', () => {
   fetchMovies();
 });
 
+
 function fetchMovies() {
   const searchTerm = searchInput.value.trim();
   const sortBy = currentSortOption;
@@ -66,4 +67,5 @@ function fetchPopularMovies() {
     })
     .catch((error) => console.log(error));
 }
+
 
