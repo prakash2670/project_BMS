@@ -28,3 +28,4 @@ sortingOptions.addEventListener('change', () => {
   currentSortOption = sortingOptions.value;
   fetchMovies();
 });
+
