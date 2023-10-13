@@ -161,7 +161,7 @@ function openMovieDetailsModal(movieId) {
   movieDetailsModal.style.display = 'block';
 }
 
-/ Close movie details modal
+//Close movie details modal
 function closeMovieDetailsModal() {
   movieDetailsModal.style.display = 'none';
   movieRecommendations.innerHTML = '';
@@ -192,4 +192,35 @@ function displayMovieRecommendations(recommendations) {
   });
 }
 
+// Display pagination links
+function displayPagination(totalPages) {
+  paginationContainer.innerHTML = '';
+
+  const maxDisplayedPages = 6; // Set the maximum number of pagination links to be displayed
+
+  let startPage = Math.max(1, currentPage - Math.floor(maxDisplayedPages / 2));
+  let endPage = Math.min(totalPages, startPage + maxDisplayedPages - 1);
+
+  if (endPage - startPage + 1 < maxDisplayedPages) {
+    startPage = Math.max(1, endPage - maxDisplayedPages + 1);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    const link = document.createElement('a');
+    link.href = '#';
+    link.textContent = i;
+    link.classList.add('pagination-link');
+
+    if (i === currentPage) {
+      link.classList.add('active');
+    }
+
+    link.addEventListener('click', () => {
+      currentPage = i;
+      fetchMovies();
+    });
+
+    paginationContainer.appendChild(link);
+  }
+}
 
