@@ -55,3 +55,15 @@ function fetchMovies() {
     .catch((error) => console.log(error));
 }
 
+function fetchPopularMovies() {
+  const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${currentPage}`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      displayMovies(data.results);
+      displayPagination(data.total_pages);
+    })
+    .catch((error) => console.log(error));
+}
+
