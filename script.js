@@ -100,4 +100,36 @@ function displayMovies(movies) {
     return;
   }
 
+ movies.forEach((movie) => {
+    const movieElement = document.createElement('div');
+    movieElement.classList.add('movie');
+
+    const image = document.createElement('img');
+    image.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    image.alt = movie.title;
+    movieElement.appendChild(image);
+
+    const movieInfo = document.createElement('div');
+    movieInfo.classList.add('movie-info');
+
+    const title = document.createElement('h3');
+    title.classList.add('movie-title');
+    title.textContent = movie.title;
+    movieInfo.appendChild(title);
+
+    const rating = document.createElement('span');
+    rating.classList.add('movie-rating');
+    rating.textContent = movie.vote_average;
+    movieInfo.appendChild(rating);
+
+    movieElement.appendChild(movieInfo);
+    moviesContainer.appendChild(movieElement);
+
+    // Event listener for displaying movie details on click
+    movieElement.addEventListener('click', () => {
+      openMovieDetailsModal(movie.id);
+    });
+  });
+}
+
 
