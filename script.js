@@ -223,4 +223,6 @@ function displayPagination(totalPages) {
     paginationContainer.appendChild(link);
   }
 }
+// Initialize the movie list on page load
+fetchPopularMovies();
 
