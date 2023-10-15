@@ -226,4 +226,3 @@ function displayPagination(totalPages) {
 
 // Initialize the movie list on page load
 fetchPopularMovies();
-
